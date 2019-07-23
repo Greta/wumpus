@@ -2,7 +2,7 @@
 A simple AngularJs project based on the TI-99/4A game, created as a learning experience.
 
 To play, visit the github page:
-https://greta.github.io/hunt/
+https://greta.github.io/wumpus/
 
 ## Controls
 * Try to kill the wumpus!
