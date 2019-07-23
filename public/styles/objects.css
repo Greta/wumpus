@@ -1,0 +1,66 @@
+.objects:before, .objects:after {
+  content: '';
+  position: absolute;
+  display: block; }
+
+.objects:after {
+  z-index: 10; }
+
+.bat .objects:after {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  background-position: -70px 90px;
+  width: 80px;
+  height: 40px;
+  top: 55px; }
+
+.bat.caught .objects:after {
+  top: 25px; }
+
+.wumpus .objects:after {
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background-position: 0 90px;
+  width: 70px;
+  height: 60px; }
+
+.pitfall .objects:after {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  background-position: -150px 90px;
+  width: 80px;
+  height: 30px;
+  top: 65px; }
+
+.player .objects:before {
+  top: 50%;
+  -webkit-transform: translateY(-50%) rotate(0deg);
+  transform: translateY(-50%) rotate(0deg);
+  z-index: 15;
+  width: 55px;
+  height: 65px;
+  left: 45px; }
+
+.ne.player-north .objects:before {
+  top: 20%; }
+
+.ne.player-south .objects:before {
+  left: 15px; }
+
+.nw.player-north .objects:before {
+  top: 20%;
+  left: 15px; }
+
+.player.aiming .objects:before {
+  background: url(../images/aim.gif); }
+
+.player.caught .objects:before {
+  top: 50%;
+  -webkit-transform: translateY(-50%) rotate(90deg);
+  transform: translateY(-50%) rotate(90deg);
+  top: 60%;
+  left: 30px; }

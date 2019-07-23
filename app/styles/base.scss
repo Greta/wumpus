@@ -1,0 +1,127 @@
+@import 'partials/angular';
+@import 'partials/blood';
+@import 'partials/objects';
+
+$spritesheet: url(../images/spritesheet.png);
+$player: url(../images/idle.gif);
+$mapWidth: 960px;
+$border: #fff;
+
+@font-face {
+  font-family: 'superscript';
+  src: url('../fonts/superscript.ttf');
+}
+
+html {
+  background: #000;
+}
+
+span {
+  &.objects, &.blood {
+    &:after {
+      background-image: $spritesheet;
+    }
+    &:before {
+      background-image: $player;
+    }
+  }
+}
+
+.map {
+  border: 5px solid $border;
+  width: $mapWidth;
+  margin: 0 auto;
+  .row {
+    display: flex;
+    > * {
+      flex: 0 0 120px;
+      height: 120px;
+      &:not(.dark) {
+        position: relative;
+        background-image: $spritesheet;
+        background-position: 0 0;
+
+        &.nw {
+          &.explored-north {
+            background-position: -120px 0;
+          }
+          &.explored-south {
+            background-position: -240px 0;
+          }
+          &.explored-north.explored-south {
+            background-image: $spritesheet, $spritesheet;
+            background-position: -120px 0, -240px 0;
+          }
+        }
+        &.ne {
+          &.explored-north {
+            background-position: -480px 0;
+          }
+          &.explored-south {
+            background-position: -360px 0;
+          }
+          &.explored-north.explored-south {
+            background-image: $spritesheet, $spritesheet;
+            background-position: -360px 0, -480px 0;
+          }
+        }
+
+        &.slime {
+          @for $i from 1 through 10 {
+            &.slime-#{$i} {
+              background-position: ($i * -120px + 120px) -120px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.bottom-ui {
+  font-family: 'superscript', Arial, sans-serif;
+  color: $border;
+  margin: 10px auto 0;
+  width: $mapWidth;
+  border: 5px solid $border;
+  padding: 5px;
+
+  h2, div {
+    display: inline-block;
+    margin: 0 15px;
+  }
+}
+
+.messages {
+  z-index: 99999;
+  position: absolute;
+  top: 200px;
+  width: 100%;
+  text-align: center;
+
+  div {
+    font-size: 40px;
+    font-family: 'superscript', Arial, sans-serif;
+    margin: 0 auto;
+    border: 5px solid $border;
+    color: $border;
+    padding: 20px;
+    display: inline-block;
+    max-width: 700px;
+    background: black;
+    span {
+      color: red;
+    }
+  }
+
+  button {
+    font-family: 'superscript', Arial, sans-serif;
+    font-size: 35px;
+    color: white;
+    width: 200px;
+    height: 63px;
+    background: url('../images/button.gif');
+    border: none;
+    &:focus { outline:0 }
+  }
+}

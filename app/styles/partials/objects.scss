@@ -1,0 +1,86 @@
+@mixin centerX() {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+@mixin centerY($rotation: 0deg) {
+  top: 50%;
+  -webkit-transform: translateY(-50%) rotate($rotation);
+  transform: translateY(-50%) rotate($rotation);
+}
+@mixin center() {
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.objects {
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    display: block;
+  }
+  &:after {
+    z-index: 10;
+  }
+
+  &:after {
+    @at-root .bat #{&} {
+      @include centerX();
+      background-position: -70px 90px;
+      width: 80px;
+      height: 40px;
+      top: 55px;
+    }
+
+    @at-root .bat.caught #{&} {
+      top: 25px;
+    }
+
+    @at-root .wumpus #{&} {
+      @include center();
+      background-position: 0 90px;
+      width: 70px;
+      height: 60px;
+    }
+
+    @at-root .pitfall #{&} {
+      @include centerX();
+      background-position: -150px 90px;
+      width: 80px;
+      height: 30px;
+      top: 65px;
+    }
+  }
+  &:before {
+    @at-root .player #{&} {
+      @include centerY();
+      z-index: 15;
+      width: 55px;
+      height: 65px;
+      left: 45px;
+    }
+
+    @at-root .ne.player-north #{&} {
+      top: 20%;
+    }
+    @at-root .ne.player-south #{&} {
+      left: 15px;
+    }
+    @at-root .nw.player-north #{&} {
+      top: 20%;
+      left: 15px;
+    }
+
+    @at-root .player.aiming #{&} {
+      background: url(../images/aim.gif);
+    }
+
+    @at-root .player.caught #{&} {
+      @include centerY(90deg);
+      top: 60%;
+      left: 30px;
+    }
+  }
+}

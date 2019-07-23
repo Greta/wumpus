@@ -1,0 +1,13 @@
+{
+  "name": "hunt",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://greta.github.io/hunt",
+  "dependencies": {
+    "node-sass-chokidar": "0.0.3"
+  },
+  "scripts": {
+    "build-css": "node-sass-chokidar app/styles/base.scss -o public/styles/",
+    "watch-css": "npm run build-css && node-sass-chokidar app/styles/base.scss -o public/styles/ --watch --recursive"
+  }
+}

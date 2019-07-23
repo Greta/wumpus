@@ -1,0 +1,39 @@
+.blood span.blood:after {
+  content: '';
+  z-index: 5;
+  background-repeat: no-repeat;
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  top: 70px;
+  left: 25px; }
+
+.blood.blood-1 span.blood:after {
+  background-position: 0px -300px; }
+
+.blood.blood-2 span.blood:after {
+  background-position: -30px -300px; }
+
+.blood.blood-3 span.blood:after {
+  background-position: -60px -300px; }
+
+.blood.blood-4 span.blood:after {
+  background-position: -90px -300px; }
+
+.blood.blood-5 span.blood:after {
+  background-position: -120px -300px; }
+
+.blood.blood-6 span.blood:after {
+  background-position: -150px -300px; }
+
+.blood.blood-7 span.blood:after {
+  background-position: -180px -300px; }
+
+.blood.blood-8 span.blood:after {
+  background-position: -210px -300px; }
+
+.blood.blood-9 span.blood:after {
+  background-position: -240px -300px; }
+
+.blood.blood-10 span.blood:after {
+  background-position: -270px -300px; }

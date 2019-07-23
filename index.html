@@ -1,0 +1,37 @@
+<!doctype html>
+<html ng-app="wumpusApp">
+  <head>
+      <title>Hunt the Wumpus</title>
+      <link href="public/styles/base.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body ng-controller="WumpusController" ng-keydown="playerActions($event)">
+    <div>
+      <div ng-cloak>
+        <div class="map">
+          <div ng-repeat="rows in map.map" class="row">
+            <div ng-repeat="room in rows" class="{{ getRoomClasses(room) }}">
+              <span class="objects"></span>
+              <span class="blood"></span>
+            </div>
+          </div>
+        </table>
+      </div>
+      <div class="bottom-ui">
+        <div class="score">
+          <h2>Score</h2>
+          <div ng-repeat="(key, value) in score">{{ key }} : {{ value }}</div>
+        </div>
+      </div>
+      <div ng-if="message" class="messages">
+        <div><span>{{ messageTitle }}</span> {{ message }} <br /><br />
+          <button ng-click="restart()" ng-keyup="console.log($event.keyCode)">Retry</button>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+    <script src="public/js/angular.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/map.js"></script>
+    <script src="app/controllers/wumpus.js"></script>
+  </body>
+</html>

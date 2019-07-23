@@ -1,0 +1,24 @@
+@mixin blood($num) {
+  background-position: ($num * -30px + 30px) -300px;
+}
+
+.blood {
+  span.blood:after {
+    content: '';
+    z-index: 5;
+    background-repeat: no-repeat;
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    top: 70px;
+    left: 25px;
+  }
+
+  @for $i from 1 through 10 {
+    &.blood-#{$i} {
+      span.blood:after {
+        @include blood($i);
+      }
+    }
+  }
+}
