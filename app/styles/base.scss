@@ -78,6 +78,19 @@ span {
   }
 }
 
+.fullMap {
+  z-index: 100000;
+  position: absolute;
+  top: 30px;
+  width: 100%;
+  text-align: center;
+  .map {
+    transform: scale(0.6);
+    background: #000;
+    box-shadow: 0 0 30px rgba(0,0,0,1);
+  }
+}
+
 .bottom-ui {
   font-family: 'superscript', Arial, sans-serif;
   color: $border;

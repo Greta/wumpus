@@ -102,6 +102,38 @@ ng\:form {
   height: 65px;
   left: 45px; }
 
+.fullMap .start .objects:before {
+  top: 50%;
+  -webkit-transform: translateY(-50%) rotate(0deg);
+  transform: translateY(-50%) rotate(0deg);
+  z-index: 15;
+  width: 55px;
+  height: 65px;
+  left: 45px;
+  background: url("../images/static.png"); }
+
+.fullMap .player.wumpus .objects:before {
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background: url("../images/spritesheet.png");
+  background-position: -230px 90px;
+  z-index: 15;
+  width: 60px;
+  height: 50px; }
+
+.fullMap .player.pitfall .objects:before {
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background: url("../images/spritesheet.png");
+  background-position: -230px 90px;
+  z-index: 15;
+  width: 60px;
+  height: 50px; }
+
 .ne.player-north .objects:before {
   top: 20%; }
 
@@ -182,6 +214,17 @@ span.objects:before, span.blood:before {
           background-position: -960px -120px; }
         .map .row > *:not(.dark).slime.slime-10 {
           background-position: -1080px -120px; }
+
+.fullMap {
+  z-index: 100000;
+  position: absolute;
+  top: 30px;
+  width: 100%;
+  text-align: center; }
+  .fullMap .map {
+    transform: scale(0.6);
+    background: #000;
+    box-shadow: 0 0 30px black; }
 
 .bottom-ui {
   font-family: 'superscript', Arial, sans-serif;

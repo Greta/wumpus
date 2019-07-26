@@ -14,6 +14,21 @@
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
 }
+@mixin player() {
+  @include centerY();
+  z-index: 15;
+  width: 55px;
+  height: 65px;
+  left: 45px;
+}
+@mixin death() {
+  @include center();
+  background: url('../images/spritesheet.png');
+  background-position: -230px 90px;
+  z-index: 15;
+  width: 60px;
+  height: 50px;
+}
 
 .objects {
   &:before, &:after {
@@ -55,11 +70,18 @@
   }
   &:before {
     @at-root .player #{&} {
-      @include centerY();
-      z-index: 15;
-      width: 55px;
-      height: 65px;
-      left: 45px;
+      @include player();
+    }
+    @at-root .fullMap .start #{&} {
+      @include player();
+      background: url('../images/static.png');
+    }
+
+    @at-root .fullMap .player.wumpus #{&} {
+      @include death();
+    }
+    @at-root .fullMap .player.pitfall #{&} {
+      @include death();
     }
 
     @at-root .ne.player-north #{&} {

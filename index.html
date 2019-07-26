@@ -14,17 +14,28 @@
               <span class="blood"></span>
             </div>
           </div>
-        </table>
-      </div>
-      <div class="bottom-ui">
-        <div class="score">
-          <h2>Score</h2>
-          <div ng-repeat="(key, value) in score">{{ key }} : {{ value }}</div>
         </div>
-      </div>
-      <div ng-if="message" class="messages">
-        <div><span>{{ messageTitle }}</span> {{ message }} <br /><br />
-          <button ng-click="restart()" ng-keyup="console.log($event.keyCode)">Retry</button>
+        <div class="bottom-ui">
+          <div class="score">
+            <h2>Score</h2>
+            <div ng-repeat="(key, value) in score">{{ key }} : {{ value }}</div>
+          </div>
+        </div>
+        <div ng-if="message" class="messages">
+          <div><span>{{ messageTitle }}</span> {{ message }} <br /><br />
+            <button ng-click="restart()">Retry</button>
+            <button ng-click="toggleFullMap()">Map</button>
+          </div>
+        </div>
+        <div ng-if="showFullMap" ng-click="toggleFullMap()" class="fullMap">
+          <div class="map {{ result }}">
+            <div ng-repeat="rows in map.map" class="row">
+              <div ng-repeat="room in rows" class="{{ getRoomClasses(room, 1) }}">
+                <span class="objects"></span>
+                <span class="blood"></span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

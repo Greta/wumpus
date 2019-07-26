@@ -58,7 +58,7 @@ class Map {
     })
 
     // Player starting room
-    map[pois.player.y][pois.player.x].push('player', 'explored')
+    map[pois.player.y][pois.player.x].push('player', 'explored', 'start')
     this.player = pois.player
 
     // The Wumpus Room!
@@ -262,6 +262,7 @@ class Map {
 
   mapComplete(result, messageTitle, message) {
     this.$scope.score[result]++
+    this.$scope.result = result === 'player' ? 'win' : 'loss'
     this.disableMovement = true
     setTimeout(() => {
       this.$scope.messageTitle = messageTitle
