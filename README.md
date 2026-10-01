@@ -32,7 +32,7 @@ The cave wraps around at its edges, and tunnels bend. Your score stays with you 
 - Keyboard support, visible focus, and text descriptions of nearby clues
 - A full cave map after each hunt
 
-The modernization was built with AI assistance. This is a personal learning and portfolio project.
+This is a personal learning and portfolio project.
 
 ## The original is still here
 
