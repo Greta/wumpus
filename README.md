@@ -2,7 +2,7 @@
 
 A dark cave, a few very unhelpful bats, and one arrow. What could go wrong?
 
-I made this little game as a learning project, inspired by Hunt the Wumpus on the TI-99/4A. This version brings it to modern Angular and makes room for phones, while keeping the pixel art, the chunky white frames, and the feel of the original.
+I made this little game as a learning project, inspired by Hunt the Wumpus on the TI-99/4A. This version brings it to modern Angular and makes room for phones, while keeping the feel of my original design.
 
 **[Play Wumpus](https://greta.github.io/wumpus/)** · **[Play Classic 0.1.0](https://greta.github.io/wumpus/classic/0.1.0/)**
 
