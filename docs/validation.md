@@ -11,6 +11,7 @@ The build compiles Angular templates and TypeScript in strict mode. The Classic 
 ## Browser checks
 
 - Desktop, 390px and 320px portrait, and 844px landscape layouts
+- Desktop keyboard guide with mobile-only movement buttons, fixed-height descriptions, and colored hazard words
 - Visible controls, aim/cancel state, firing, game-over messages, session score, and retry
 - Full-map dialog, close control, Escape, and keyboard focus
 - Original sprites, font, and the playable Classic link

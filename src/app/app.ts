@@ -12,11 +12,12 @@ import {
   viewChild,
 } from "@angular/core";
 import { Board } from "./board";
+import { ClueText } from "./clue-text";
 import { Direction, Game } from "./game";
 
 @Component({
   selector: "wumpus-app",
-  imports: [Board],
+  imports: [Board, ClueText],
   templateUrl: "./app.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { "(document:keydown)": "onKey($event)" },
@@ -45,6 +46,8 @@ export class App implements OnDestroy {
   private readonly retry = viewChild<ElementRef<HTMLButtonElement>>("retry");
   private readonly aim =
     viewChild.required<ElementRef<HTMLButtonElement>>("aim");
+  private readonly gameScreen =
+    viewChild.required<ElementRef<HTMLElement>>("gameScreen");
 
   constructor() {
     effect(() => {
@@ -60,9 +63,18 @@ export class App implements OnDestroy {
   restart(): void {
     this.closeMap();
     this.game.newGame();
-    afterNextRender(() => this.aim().nativeElement.focus(), {
-      injector: this.injector,
-    });
+    afterNextRender(
+      () => {
+        const aim = this.aim().nativeElement;
+        (aim.getClientRects().length
+          ? aim
+          : this.gameScreen().nativeElement
+        ).focus({ preventScroll: true });
+      },
+      {
+        injector: this.injector,
+      },
+    );
   }
   openMap(): void {
     if (!this.game.ended) return;

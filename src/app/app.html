@@ -6,7 +6,12 @@
     >
   </header>
 
-  <section class="game-screen" aria-label="Hunt the Wumpus game">
+  <section
+    #gameScreen
+    class="game-screen"
+    tabindex="-1"
+    aria-label="Hunt the Wumpus game"
+  >
     <div class="cave-frame">
       <wumpus-board
         [rooms]="state().rooms"
@@ -17,7 +22,7 @@
         <h2 id="result-title" [class.victory]="state().phase === 'won'">
           {{ result.title }}
         </h2>
-        <p>{{ result.message }}</p>
+        <p><wumpus-clue-text [text]="result.message" /></p>
         <div class="result-actions">
           <button #retry (click)="restart()">Retry</button>
           <button (click)="openMap()">View map</button>
@@ -38,13 +43,29 @@
           aria-live="polite"
           aria-atomic="true"
         >
-          {{ state().description }}
+          <wumpus-clue-text [text]="state().description" />
         </p>
         <p class="control-hint">
-          {{ state().ended ? 'View the full cave, or retry for a new hunt.' :
+          <wumpus-clue-text
+            [text]="state().ended ? 'View the full cave, or retry for a new hunt.' :
           state().aiming ? 'Choose a direction to fire. You have one arrow.' :
-          'Move with the arrows. Aim when you find the wumpus.' }}
+          'Move with the arrows. Aim when you find the wumpus.'"
+          />
         </p>
+      </div>
+      <div class="keyboard-guide" aria-label="Keyboard controls">
+        <p class="keyboard-label">KEYBOARD CONTROLS</p>
+        <p>
+          <kbd class="arrow-keys" aria-label="Arrow keys">↑ ↓ ← →</kbd
+          ><span>Move through the cave</span>
+        </p>
+        <p>
+          <kbd>F</kbd><span>Take aim, then press an arrow key to shoot</span>
+        </p>
+        <p>
+          <kbd>F</kbd><span>or <kbd>Esc</kbd> to cancel aim</span>
+        </p>
+        <p class="one-arrow">One arrow. Make it count.</p>
       </div>
       <div class="controls" role="group" aria-label="Game controls">
         <div class="direction-pad" role="group" aria-label="Direction pad">

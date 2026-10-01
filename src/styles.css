@@ -120,11 +120,13 @@ wumpus-board {
 }
 .readout {
   max-width: 440px;
+  width: 100%;
 }
 .mode {
   font-size: 20px;
   color: #fff;
   margin-bottom: 8px;
+  height: 2.8em;
 }
 .mode.armed {
   color: #ffdd54;
@@ -132,19 +134,82 @@ wumpus-board {
 .game-status {
   font-size: 17px;
   line-height: 1.4;
-  min-height: 2.8em;
+  height: 11.2em;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+.clue-blood {
+  color: #ff8585;
+}
+.clue-wumpus {
+  color: #ff5252;
+}
+.clue-slime {
+  color: #7ddd75;
+}
+.clue-pit {
+  color: #b0dc8a;
+}
+.clue-bat {
+  color: #d6b58c;
 }
 .control-hint {
+  display: none;
   font: 12px/1.6 monospace;
   color: #bdbdbd;
   margin-top: 6px;
+  height: 4.8em;
 }
 .controls {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   gap: 18px;
   flex-shrink: 0;
+}
+.keyboard-guide {
+  width: 100%;
+  font: 12px/1.6 monospace;
+  color: #ccc;
+}
+.keyboard-guide > p + p {
+  margin-top: 16px;
+}
+.keyboard-label {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: #999;
+}
+.keyboard-guide span {
+  display: block;
+  margin-top: 5px;
+}
+kbd {
+  font: inherit;
+  color: #fff;
+}
+.keyboard-guide > p > kbd {
+  font-size: 20px;
+}
+.keyboard-guide .arrow-keys {
+  font:
+    24px/1.2 Arial,
+    sans-serif;
+  letter-spacing: 0.08em;
+}
+.keyboard-guide > p:nth-last-child(2) {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.keyboard-guide > p:nth-last-child(2) > kbd {
+  font-size: 12px;
+}
+.keyboard-guide > p:nth-last-child(2) span {
+  margin-top: 0;
+}
+.one-arrow {
+  color: #999;
 }
 .direction-pad {
   display: grid;
@@ -348,10 +413,11 @@ footer {
   .mode {
     font-size: 19px;
     margin-bottom: 5px;
+    height: 1.4em;
   }
   .game-status {
     font-size: 16px;
-    min-height: 2.8em;
+    height: 8.4em;
   }
   .control-hint {
     font-size: 11px;
@@ -436,6 +502,7 @@ footer {
   }
   .game-status {
     font-size: 14px;
+    height: 7em;
   }
   .control-hint,
   .key-hint {
@@ -455,6 +522,26 @@ footer {
   .result-panel {
     position: fixed;
     width: min(500px, 90vw);
+  }
+}
+/* Phone portrait and compact landscape layouts keep the touch controls. */
+@media (max-width: 700px), (max-width: 1000px) and (max-height: 550px) {
+  .controls {
+    display: flex;
+  }
+  .keyboard-guide {
+    display: none;
+  }
+  .control-hint {
+    display: block;
+  }
+}
+@media (max-width: 1000px) and (max-height: 550px) and (min-width: 601px) {
+  .control-hint {
+    display: none;
+  }
+  .mode {
+    height: 1.4em;
   }
 }
 @media (prefers-reduced-motion: reduce) {

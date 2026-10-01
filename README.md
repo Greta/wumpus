@@ -6,7 +6,7 @@ I made this little game as a learning project, inspired by Hunt the Wumpus on th
 
 **[Play Wumpus](https://greta.github.io/wumpus/)** · **[Play Classic 0.1.0](https://greta.github.io/wumpus/classic/0.1.0/)**
 
-![Hunt the Wumpus with its original pixel art and on-screen controls](docs/wumpus.jpg)
+![Hunt the Wumpus with its original pixel art, colored clues, and keyboard guide](docs/wumpus.jpg)
 
 ## Into the cave
 
@@ -14,7 +14,7 @@ Explore the rooms and look for clues. Blood means the wumpus is close. Slime war
 
 When you think you know where the wumpus is, take aim and fire into its room. You only get one arrow.
 
-- **Move:** use the on-screen direction pad, arrow keys, or number pad (8, 2, 4, 6)
+- **Move:** use the direction pad on mobile, arrow keys, or number pad (8, 2, 4, 6)
 - **Aim:** tap Aim or press F, then choose a direction to fire
 - **Cancel aim:** tap again, press F again, or press Escape
 - **After a hunt:** use Retry or Enter for a new cave, or View map / M to see what was hiding in the dark
@@ -27,7 +27,8 @@ The cave wraps around at its edges, and tunnels bend. Your score stays with you 
 - Modern Angular and TypeScript
 - The original sprites, font, cave size, and game rules
 - A layout that fits phones in portrait or landscape
-- Large direction and Aim buttons, always on the game screen
+- Large direction and Aim buttons on mobile, with a keyboard guide on larger screens
+- A steady room-description area with red wumpus and blood clues, green slime and pit clues, and tan bat clues
 - Keyboard support, visible focus, and text descriptions of nearby clues
 - A full cave map after each hunt
 
