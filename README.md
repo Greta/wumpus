@@ -36,9 +36,7 @@ This is a personal learning and portfolio project.
 
 ## The original is still here
 
-Version **0.1.0** is preserved in [Classic](classic/0.1.0/), with all 23 original files unchanged. You can still play it from the link above, or get its source from the [v0.1.0 tag](https://github.com/Greta/wumpus/tree/v0.1.0).
-
-Classic keeps its original desktop layout and AngularJS setup, including its external Lodash script. The current game bundles its dependencies locally.
+The original was built in AngularJS and is still [available to play](https://greta.github.io/wumpus/classic/0.1.0/) if you're curious!
 
 ## Run it locally
 
