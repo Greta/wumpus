@@ -1,0 +1,161 @@
+<main class="game-shell">
+  <header class="game-header">
+    <h1>Hunt the Wumpus</h1>
+    <a href="classic/0.1.0/" title="Play the original AngularJS version"
+      >Classic 0.1.0 ↗</a
+    >
+  </header>
+
+  <section class="game-screen" aria-label="Hunt the Wumpus game">
+    <div class="cave-frame">
+      <wumpus-board
+        [rooms]="state().rooms"
+        [label]="'Cave map. ' + state().description"
+      />
+      @if (state().result; as result) {
+      <section class="result-panel" aria-labelledby="result-title">
+        <h2 id="result-title" [class.victory]="state().phase === 'won'">
+          {{ result.title }}
+        </h2>
+        <p>{{ result.message }}</p>
+        <div class="result-actions">
+          <button #retry (click)="restart()">Retry</button>
+          <button (click)="openMap()">View map</button>
+        </div>
+      </section>
+      }
+    </div>
+
+    <div class="control-panel">
+      <div class="readout">
+        <p class="mode" [class.armed]="state().aiming">
+          {{ state().aiming ? 'TAKING AIM' : state().ended ? 'HUNT COMPLETE' :
+          'EXPLORE THE CAVE' }}
+        </p>
+        <p
+          class="game-status"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          {{ state().description }}
+        </p>
+        <p class="control-hint">
+          {{ state().ended ? 'View the full cave, or retry for a new hunt.' :
+          state().aiming ? 'Choose a direction to fire. You have one arrow.' :
+          'Move with the arrows. Aim when you find the wumpus.' }}
+        </p>
+      </div>
+      <div class="controls" role="group" aria-label="Game controls">
+        <div class="direction-pad" role="group" aria-label="Direction pad">
+          <button
+            class="north direction"
+            [disabled]="!game.canMove('north')"
+            [attr.aria-label]="state().aiming ? 'Fire north' : 'Move north'"
+            (click)="move('north')"
+          >
+            ▲
+          </button>
+          <button
+            class="west direction"
+            [disabled]="!game.canMove('west')"
+            [attr.aria-label]="state().aiming ? 'Fire west' : 'Move west'"
+            (click)="move('west')"
+          >
+            ◀
+          </button>
+          <span class="pad-center" aria-hidden="true">✦</span>
+          <button
+            class="east direction"
+            [disabled]="!game.canMove('east')"
+            [attr.aria-label]="state().aiming ? 'Fire east' : 'Move east'"
+            (click)="move('east')"
+          >
+            ▶
+          </button>
+          <button
+            class="south direction"
+            [disabled]="!game.canMove('south')"
+            [attr.aria-label]="state().aiming ? 'Fire south' : 'Move south'"
+            (click)="move('south')"
+          >
+            ▼
+          </button>
+        </div>
+        <div class="aim-control">
+          <button
+            #aim
+            class="aim-button"
+            [class.armed]="state().aiming"
+            [attr.aria-pressed]="state().aiming"
+            [disabled]="state().phase !== 'playing'"
+            (click)="toggleAim()"
+          >
+            {{ state().aiming ? 'Cancel aim' : 'Aim' }}
+          </button>
+          <span class="key-hint">keyboard: F</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="score" aria-label="Session score">
+    <h2>Score</h2>
+    <span>You <strong>{{ state().score.player }}</strong></span>
+    <span>Wumpus <strong>{{ state().score.wumpus }}</strong></span>
+    <span>Pitfalls <strong>{{ state().score.pitfall }}</strong></span>
+  </section>
+
+  <details class="instructions">
+    <summary>How to play</summary>
+    <p>
+      Find the wumpus, then take aim and fire into its room. You have just one
+      arrow, so make it count.
+    </p>
+    <ul>
+      <li>
+        Use the direction pad, arrow keys, or number pad (8, 2, 4, 6) to move.
+      </li>
+      <li>
+        Tap Aim or press F, then choose a direction to shoot. Tap again or press
+        Escape to cancel.
+      </li>
+      <li>
+        Blood means the wumpus is within two connected rooms. Slime warns of a
+        nearby pit. Bats may carry you somewhere unexpected.
+      </li>
+      <li>
+        Tunnels bend, and the cave wraps around at its edges. Dark rooms are
+        still unexplored.
+      </li>
+      <li>
+        After a hunt, view the full map with M or try again with Enter. Your
+        score lasts for this visit.
+      </li>
+    </ul>
+  </details>
+  <footer>
+    <span>0.2.0 · Made by <a href="https://github.com/Greta">Greta</a></span
+    ><a href="https://github.com/Greta/wumpus">Source code ↗</a>
+  </footer>
+</main>
+
+<dialog
+  #mapDialog
+  class="map-dialog"
+  (close)="mapOpen.set(false)"
+  aria-labelledby="map-title"
+>
+  <header>
+    <h2 id="map-title">The whole cave</h2>
+    <button (click)="closeMap()" autofocus>Close map</button>
+  </header>
+  @if (mapOpen()) {
+  <wumpus-board
+    [rooms]="state().rooms"
+    [revealed]="true"
+    label="The full cave, showing the wumpus, pitfalls, bats, and your starting room."
+  />
+  }
+  <p>Your starting point is marked. Press Escape or Close map to return.</p>
+</dialog>

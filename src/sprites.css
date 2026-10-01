@@ -1,0 +1,259 @@
+/* Original 0.1.0 pixel art and sprite positions. Layout is in styles.css. */
+.blood span.blood:after {
+  content: "";
+  z-index: 5;
+  background-repeat: no-repeat;
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  top: 70px;
+  left: 25px;
+}
+
+.blood.blood-1 span.blood:after {
+  background-position: 0px -300px;
+}
+
+.blood.blood-2 span.blood:after {
+  background-position: -30px -300px;
+}
+
+.blood.blood-3 span.blood:after {
+  background-position: -60px -300px;
+}
+
+.blood.blood-4 span.blood:after {
+  background-position: -90px -300px;
+}
+
+.blood.blood-5 span.blood:after {
+  background-position: -120px -300px;
+}
+
+.blood.blood-6 span.blood:after {
+  background-position: -150px -300px;
+}
+
+.blood.blood-7 span.blood:after {
+  background-position: -180px -300px;
+}
+
+.blood.blood-8 span.blood:after {
+  background-position: -210px -300px;
+}
+
+.blood.blood-9 span.blood:after {
+  background-position: -240px -300px;
+}
+
+.blood.blood-10 span.blood:after {
+  background-position: -270px -300px;
+}
+
+.objects:before,
+.objects:after {
+  content: "";
+  position: absolute;
+  display: block;
+}
+
+.objects:after {
+  z-index: 10;
+}
+
+.bat .objects:after {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  background-position: -70px 90px;
+  width: 80px;
+  height: 40px;
+  top: 55px;
+}
+
+.bat.caught .objects:after {
+  top: 25px;
+}
+
+.wumpus .objects:after {
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background-position: 0 90px;
+  width: 70px;
+  height: 60px;
+}
+
+.pitfall .objects:after {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  background-position: -150px 90px;
+  width: 80px;
+  height: 30px;
+  top: 65px;
+}
+
+.player .objects:before {
+  top: 50%;
+  -webkit-transform: translateY(-50%) rotate(0deg);
+  transform: translateY(-50%) rotate(0deg);
+  z-index: 15;
+  width: 55px;
+  height: 65px;
+  left: 45px;
+}
+
+.fullMap .start .objects:before {
+  top: 50%;
+  -webkit-transform: translateY(-50%) rotate(0deg);
+  transform: translateY(-50%) rotate(0deg);
+  z-index: 15;
+  width: 55px;
+  height: 65px;
+  left: 45px;
+  background: url("../public/images/static.png");
+}
+
+.fullMap .player.wumpus .objects:before {
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background: url("../public/images/spritesheet.png");
+  background-position: -230px 90px;
+  z-index: 15;
+  width: 60px;
+  height: 50px;
+}
+
+.fullMap .player.pitfall .objects:before {
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background: url("../public/images/spritesheet.png");
+  background-position: -230px 90px;
+  z-index: 15;
+  width: 60px;
+  height: 50px;
+}
+
+.ne.player-north .objects:before {
+  top: 20%;
+}
+
+.ne.player-south .objects:before {
+  left: 15px;
+}
+
+.nw.player-north .objects:before {
+  top: 20%;
+  left: 15px;
+}
+
+.player.aiming .objects:before {
+  background: url(../public/images/aim.gif);
+}
+
+.player.caught .objects:before {
+  top: 50%;
+  -webkit-transform: translateY(-50%) rotate(90deg);
+  transform: translateY(-50%) rotate(90deg);
+  top: 60%;
+  left: 30px;
+}
+
+@font-face {
+  font-family: "superscript";
+  src: url("../public/fonts/superscript.ttf");
+}
+
+html {
+  background: #000;
+}
+
+span.objects:after,
+span.blood:after {
+  background-image: url(../public/images/spritesheet.png);
+}
+
+span.objects:before,
+span.blood:before {
+  background-image: url(../public/images/idle.gif);
+}
+
+.map {
+  border: 5px solid #fff;
+  width: 960px;
+  margin: 0 auto;
+}
+.map .row {
+  display: flex;
+}
+.map .row > * {
+  flex: 0 0 120px;
+  height: 120px;
+}
+.map .row > *:not(.dark) {
+  position: relative;
+  background-image: url(../public/images/spritesheet.png);
+  background-position: 0 0;
+}
+.map .row > *:not(.dark).nw.explored-north {
+  background-position: -120px 0;
+}
+.map .row > *:not(.dark).nw.explored-south {
+  background-position: -240px 0;
+}
+.map .row > *:not(.dark).nw.explored-north.explored-south {
+  background-image:
+    url(../public/images/spritesheet.png), url(../public/images/spritesheet.png);
+  background-position:
+    -120px 0,
+    -240px 0;
+}
+.map .row > *:not(.dark).ne.explored-north {
+  background-position: -480px 0;
+}
+.map .row > *:not(.dark).ne.explored-south {
+  background-position: -360px 0;
+}
+.map .row > *:not(.dark).ne.explored-north.explored-south {
+  background-image:
+    url(../public/images/spritesheet.png), url(../public/images/spritesheet.png);
+  background-position:
+    -360px 0,
+    -480px 0;
+}
+.map .row > *:not(.dark).slime.slime-1 {
+  background-position: 0px -120px;
+}
+.map .row > *:not(.dark).slime.slime-2 {
+  background-position: -120px -120px;
+}
+.map .row > *:not(.dark).slime.slime-3 {
+  background-position: -240px -120px;
+}
+.map .row > *:not(.dark).slime.slime-4 {
+  background-position: -360px -120px;
+}
+.map .row > *:not(.dark).slime.slime-5 {
+  background-position: -480px -120px;
+}
+.map .row > *:not(.dark).slime.slime-6 {
+  background-position: -600px -120px;
+}
+.map .row > *:not(.dark).slime.slime-7 {
+  background-position: -720px -120px;
+}
+.map .row > *:not(.dark).slime.slime-8 {
+  background-position: -840px -120px;
+}
+.map .row > *:not(.dark).slime.slime-9 {
+  background-position: -960px -120px;
+}
+.map .row > *:not(.dark).slime.slime-10 {
+  background-position: -1080px -120px;
+}
